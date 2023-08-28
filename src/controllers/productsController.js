@@ -77,7 +77,7 @@ const controller = {
 		return product;
 		})
 
-		fs.writeFileSync = path.join(__dirname, '../data/productsDataBase.json', JSON.stringify(productsModify,null,3));
+		fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(productsModify,null,3));
 
 		res.redirect('/products')
 	},
@@ -85,9 +85,9 @@ const controller = {
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 		const productsModify = products.filter(product => product.id !== +req.params.id)
-		
-		fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(productsModify,null,3));
-		return res.redirect('/products');
+			
+			fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(productsModify,null,3))
+			return res.redirect('/products')
 	}
 };
 
