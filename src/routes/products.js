@@ -10,7 +10,7 @@ router.get('/', productsController.index);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productsController.create); 
-router.post('/create', productsController.store); 
+router.post('/create', productsController.store);
 
 
 /*** GET ONE PRODUCT ***/ 
@@ -18,7 +18,7 @@ router.get('/detail/:id', productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsController.edit); 
-router.put('/update/id:', productsController.update); 
+router.put('/update/:id', productsController.update); 
 
 
 /*** DELETE ONE PRODUCT***/ 

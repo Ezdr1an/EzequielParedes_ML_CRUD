@@ -30,24 +30,24 @@ const controller = {
 
 	// Create - Form to create
 	create: (req, res) => {
-		res.render('product-create-form')
+		return res.render('product-create-form')
 	},
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		const {name, price, description, discount, category} = req.body;
+		const {name, price, description, category, discount} = req.body;
 		const product = {
-			id : products[products.length -1].id + 1,
-			name : name.trim(),
-			price : +price,
-			discount : +discount,
+			id: products[products.length -1].id + 1,
+			name: name.trim(),
+			price: +price,
+			discount: +discount,
 			category,
 			description : description.trim(),
-			Image : null
+			image: null
 		}
 		products.push(product)
 
-		fs.writeFileSync = path.join(__dirname, '../data/productsDataBase.json', JSON.stringify(products,null,3));
+		fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(products,null,3))
 		return res.redirect('/products')
 	},
 
@@ -84,8 +84,8 @@ const controller = {
 
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
-		const productsModify = products.filter(product => product.id !== +req.params.id);
-		fs.writeFileSync = path.join(__dirname, '../data/productsDataBase.json', JSON.stringify(productsModify,null,3));
+		const productsModify = products.filter(product => product.id !== +req.params.id)
+		fs.writeFileSync(path.join(__dirname, '../data/productsDataBase.json'), JSON.stringify(productsModify,null,3));
 		res.redirect('/products');
 	}
 };
